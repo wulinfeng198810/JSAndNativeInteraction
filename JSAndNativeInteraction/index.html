@@ -1,0 +1,64 @@
+<html>
+    <!--描述网页信息-->
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>html</title>
+
+        <script>
+            //OC调用JS的方法列表
+        	function alertMobile() {
+                //iOS7 以后调用alert被禁用，可以重写来实现
+        		//alert('我的手机号是:13300001111')，无效
+                document.getElementById('mobile').innerHTML = '我的手机号是:13300001111'
+        	}
+
+        	function alertName(msg) {
+                document.getElementById('mobile').innerHTML = '你好 ' + msg
+            }
+
+        	function alertSendMsg(num,msg) {
+                document.getElementById('mobile').innerHTML = '这是我的手机号:' + num + ',' + msg + '!!'
+            }
+        
+        
+            // JS响应方法列表
+            
+            // 调原生界面
+            // NativefunctionName 原生方法名
+            // params 参数规则： null, '字符串', ['expedia', 'camera']
+            // window.webkit.messageHandlers. NativefunctionName .postMessage( params );
+            
+            function callNativeCamera() {
+                window.webkit.messageHandlers.nativeCamera.postMessage(['expedia', 'camera'])
+            }
+
+            function btnClick2() {
+                window.webkit.messageHandlers.showName.postMessage('hello world')
+            }
+
+            function btnClick3() {
+                window.webkit.messageHandlers.showSendMsg.postMessage(null)
+            }
+
+        </script>
+        
+        
+    </head>
+
+    <!--网页具体内容-->
+    <body>
+        <br/>
+
+		<h1>
+			<label>我是web</label>
+		</h1>
+		<br/>
+
+        <div id="mobile"></div>
+		<div>
+			<button class="btn" type="button" onclick="callNativeCamera()">Call Native</button>
+		</div>
+		<br/>
+
+    </body>
+</html>
